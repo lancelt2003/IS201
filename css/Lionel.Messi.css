@@ -1,0 +1,237 @@
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: lightgray;
+    color: black;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #004D98; 
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.menu-container {
+    position: absolute;
+    top: 20px;
+    right: 20px; 
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    top: 40px; 
+    right: 0;
+    width: 200px;
+    background-color: #004D98;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px;
+    display: block;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+    color: #004D98;
+}
+
+.menu-toggle:checked + .menu-icon + .dropdown-content {
+    display: block;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.nested-list {
+    margin-bottom: 20px;
+}
+
+.nested-list ol {
+    list-style-type: decimal;
+}
+
+.nested-list li {
+    font-size: 1.2rem;
+}
+
+.nested-list ul {
+    list-style-type: circle;
+    padding-left: 20px;
+}
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+.custom-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.video-container {
+    margin-bottom: 20px;
+}
+
+video, iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 315px;
+    border-radius: 8px;
+}
+
+.anchor-link {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+.anchor-link:hover {
+    color: #004D98; 
+    text-decoration: underline;
+}
+
+.anchor-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    text-align: center;  
+}
+
+footer {
+    background-color: #DB0030;
+    color: white;
+    text-align: center;
+    padding: 0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.image-container {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.custom-image {
+    width: 100%; 
+    height: auto;
+    border-radius: 8px;
+}
+
+.image-container img:first-child {
+    max-width: 500px;
+    height: auto;
+}
+
+.image-container img:nth-child(2),
+.image-container img:nth-child(3) {
+    max-width: 700px;
+    height: auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 20px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tableau-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.tableauPlaceholder {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding-left: 250px;
+}
+
+.tableauViz {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 800px !important;
+}
+.messi-quiz-link {
+    display: block; /* Make the link a block element */
+    margin: 20px auto; /* Center the link horizontally */
+    font-size: 1.5rem; /* Adjust font size */
+    font-weight: bold; /* Make the text bold */
+    color: black; /* Set the text color to black */
+    text-decoration: none; /* Remove underline */
+    text-align: center; /* Ensure the text is centered */
+    text-decoration: underline
+}
+
+.messi-quiz-link:hover {
+    color: #004D98; /* Change color on hover */
+    text-decoration: underline; /* Underline the text on hover */
+}

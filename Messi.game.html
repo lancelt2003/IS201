@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messi Accomplishment Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #004D98;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .answer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .answer-buttons button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #004D98;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .answer-buttons button:hover {
+            background-color: #003B6C;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #DB0030;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            text-align: center;
+        }
+
+        .retry-button {
+            display: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #DB0030;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .retry-button:hover {
+            background-color: #C74D30;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lionel Messi Accomplishment Quiz</h1>
+
+    <div class="container">
+        <div class="question" id="question"></div>
+
+        <div class="answer-buttons">
+            <button class="answer-option" data-answer="false">Option 1</button>
+            <button class="answer-option" data-answer="false">Option 2</button>
+            <button class="answer-option" data-answer="false">Option 3</button>
+            <button class="answer-option" data-answer="false">Option 4</button>
+        </div>
+
+        <div class="result" id="result-message"></div>
+
+        <!-- Retry button -->
+        <button class="retry-button" id="retry-button">Try Again</button>
+    </div>
+
+    <footer>
+        &copy; 2024 Lionel Messi Quiz - All Rights Reserved.
+    </footer>
+
+    <script>
+        // List of all questions and answers based on Messi's accomplishments
+        const questions = [
+            {
+                question: "How many La Liga titles has Messi won?",
+                correctAnswer: "10",
+                options: ["8", "10", "12", "15"]
+            },
+            {
+                question: "How many Copa Del Rey titles has Messi won with Barcelona?",
+                correctAnswer: "7",
+                options: ["5", "6", "7", "9"]
+            },
+            {
+                question: "How many FIFA World Cup titles has Messi won with Argentina?",
+                correctAnswer: "1",
+                options: ["0", "1", "2", "3"]
+            },
+            {
+                question: "How many Champions League titles has Messi won?",
+                correctAnswer: "4",
+                options: ["2", "3", "4", "5"]
+            },
+            {
+                question: "How many Ballon d'Ors has Messi won?",
+                correctAnswer: "8",
+                options: ["5", "7", "8", "10"]
+            },
+            {
+                question: "How many Copa América titles has Messi won with Argentina?",
+                correctAnswer: "1",
+                options: ["0", "1", "2", "3"]
+            },
+            {
+                question: "How many European Golden Shoes has Messi won?",
+                correctAnswer: "6",
+                options: ["4", "5", "6", "7"]
+            },
+            {
+                question: "How many World Cup Golden Balls has Messi won?",
+                correctAnswer: "2",
+                options: ["1", "2", "3", "4"]
+            },
+            {
+                question: "How many Ligue 1 titles has Messi won with Paris Saint-Germain?",
+                correctAnswer: "2",
+                options: ["1", "2", "3", "4"]
+            },
+            {
+                question: "How many Leagues Cups has Messi won with Inter Miami?",
+                correctAnswer: "1",
+                options: ["0", "1", "2", "3"]
+            },
+            {
+                question: "How many times has Messi won the The Best FIFA Men's Player award?",
+                correctAnswer: "3",
+                options: ["1", "2", "3", "4"]
+            },
+            {
+                question: "How many times has Messi won the Pichichi Trophy in La Liga?",
+                correctAnswer: "8",
+                options: ["6", "7", "8", "9"]
+            },
+            {
+                question: "How many Club World Cups has Messi won with Barcelona?",
+                correctAnswer: "3",
+                options: ["1", "2", "3", "4"]
+            },
+            {
+                question: "How many Supercopas de España has Messi won with Barcelona?",
+                correctAnswer: "8",
+                options: ["5", "6", "7", "8"]
+            },
+            {
+                question: "How many UEFA Super Cups has Messi won with Barcelona?",
+                correctAnswer: "3",
+                options: ["1", "2", "3", "4"]
+            },
+            {
+                question: "How many times has Messi won the Laureus World Sports Award?",
+                correctAnswer: "2",
+                options: ["1", "2", "3", "4"]
+            },
+            {
+                question: "How many goals did Messi score in the 2012 calendar year, setting a world record?",
+                correctAnswer: "91",
+                options: ["85", "90", "91", "95"]
+            },
+            {
+                question: "How many goals has Messi scored for FC Barcelona?",
+                correctAnswer: "672",
+                options: ["650", "672", "700", "750"]
+            },
+            {
+                question: "How many times has Messi won the Golden Boy award?",
+                correctAnswer: "1",
+                options: ["0", "1", "2", "3"]
+            },
+            {
+                question: "How many times has Messi been the top scorer in La Liga?",
+                correctAnswer: "8",
+                options: ["6", "7", "8", "9"]
+            },
+            {
+                question: "How many U-20 World Cup titles has Messi won with Argentina?",
+                correctAnswer: "1",
+                options: ["0", "1", "2", "3"]
+            },
+            {
+                question: "How many times has Messi been the Champions League top scorer?",
+                correctAnswer: "6",
+                options: ["4", "5", "6", "7"]
+            },
+            {
+                question: "How many goals has Messi scored in El Clásico?",
+                correctAnswer: "26",
+                options: ["20", "22", "25", "26"]
+            }
+        ];
+
+        // Randomize the order of the questions
+        const shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+
+        // Select DOM elements
+        const questionElement = document.getElementById('question');
+        const answerButtons = document.querySelectorAll('.answer-option');
+        const resultMessage = document.getElementById('result-message');
+        const retryButton = document.getElementById('retry-button');
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        // Function to load the next question
+        function loadNextQuestion() {
+            if (currentQuestionIndex < 8) {
+                const question = shuffledQuestions[currentQuestionIndex];
+                questionElement.textContent = question.question;
+
+                // Shuffle options
+                const shuffledOptions = question.options.sort(() => Math.random() - 0.5);
+
+                // Set answer buttons text
+                answerButtons.forEach((button, index) => {
+                    button.textContent = shuffledOptions[index];
+                    button.dataset.answer = shuffledOptions[index] === question.correctAnswer ? "true" : "false";
+                });
+
+                // Reset the result message
+                resultMessage.textContent = "";
+            } else {
+                // End the quiz and show the final score
+                questionElement.textContent = `You got ${score} out of 8 correct!`;
+                answerButtons.forEach(button => button.style.display = "none");
+                retryButton.style.display = "block";
+            }
+        }
+
+        // Function to handle answer selection
+        answerButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const userAnswer = e.target.dataset.answer;
+                const correctAnswer = shuffledQuestions[currentQuestionIndex].correctAnswer;
+
+                if (userAnswer === "true") {
+                    resultMessage.textContent = "Correct!";
+                    resultMessage.style.color = "green";
+                    score++;
+                } else {
+                    resultMessage.textContent = "Wrong!";
+                    resultMessage.style.color = "red";
+                }
+
+                // Increment question index and load next question
+                currentQuestionIndex++;
+                setTimeout(loadNextQuestion, 1000); // Load next question after a brief delay
+            });
+        });
+
+        // Retry button functionality
+        retryButton.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            resultMessage.textContent = "";
+            retryButton.style.display = "none";
+            answerButtons.forEach(button => button.style.display = "inline-block");
+            loadNextQuestion();
+        });
+
+        // Start the quiz when the page is loaded
+        window.onload = loadNextQuestion;
+    </script>
+
+</body>
+</html>
